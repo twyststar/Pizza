@@ -21,9 +21,9 @@ _None_
 
 ## Specs
 
- _The program will accept user input_
-* _Input - Pepperoni_
-* _Output - Pepperoni_
+ _The program will accept user input and assign value_
+* _Input - Size = Small_
+* _Output - Small 12_
 
 _The program will track assigned cost for input_
 * _Input -Pepperoni_
