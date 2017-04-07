@@ -11,7 +11,11 @@ var myPizza = new Pizza();
  function getTotal(total, num){
    return total + num;
   }
-
+// function finalOrder(){
+//   myPizza.toppings.forEach(topping){
+//     $("#topList").append("<li>" + this.topping + "</li>");
+//   }
+// }
 
 //UI Logic
 $(document).ready(function(){
@@ -53,7 +57,11 @@ $(document).ready(function(){
     toppingCost = toppingCost.reduce(getTotal);
     myPizza.toppings = toppingChoices;
     myPizza.costs = (myPizza.costs + toppingCost);
-
+    $(".final").show();
+    myPizza.toppings.forEach(function (topping) {
+      $("#topList").append("<li>" + topping + "</li>");
+    });
+    $(".total").text("$" + myPizza.costs + ".97" )
     console.log(myPizza.costs);
 
   });

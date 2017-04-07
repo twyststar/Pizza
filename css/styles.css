@@ -12,6 +12,9 @@ h3 {
 #toppings {
   display: none;
 }
+.final {
+  display: none;
+}
 .well {
   min-height: 700px;
 }
