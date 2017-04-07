@@ -8,14 +8,29 @@ function Pizza (size, crust, cheese, costs, toppings) {
 }
 var myPizza = new Pizza();
 
- function getTotal(total, num){
-   return total + num;
-  }
-// function finalOrder(){
-//   myPizza.toppings.forEach(topping){
-//     $("#topList").append("<li>" + this.topping + "</li>");
-//   }
-// }
+function getTotal(total, num){
+ return total + num;
+}
+
+var update = function(){
+  $(".size").text(myPizza.size);
+  $(".crust").text(myPizza.crust);
+  $(".cheese").text(myPizza.cheese);
+}
+
+var getCost = function(){
+  toppingCost = toppingCost.reduce(getTotal);
+}
+
+Pizza.prototype.finalOrder = function(){
+  myPizza.toppings = toppingChoices;
+  myPizza.costs = (myPizza.costs + toppingCost);
+
+  myPizza.toppings.forEach(function (topping) {
+    $("#topList").append("<li>" + topping + "</li>");
+  });
+  $(".total").text("$" + myPizza.costs + ".97" )
+}
 
 //UI Logic
 $(document).ready(function(){
@@ -30,38 +45,33 @@ $(document).ready(function(){
      var cheeseCost = parseInt($("#cheeseChoice").val());
      var basicCost = sizeCost + crustCost + cheeseCost;
      myPizza = new Pizza (size, crust, cheese);
-     myPizza.costs = (sizeCost + crustCost + cheeseCost);
+     myPizza.costs = (basicCost);
      $("#sizeCrust").hide();
      $("#dough").hide();
      $("#toppings").show();
      $("#topPic").show();
-     $(".size").text(myPizza.size);
-     $(".crust").text(myPizza.crust);
-     $(".cheese").text(myPizza.cheese);
-     console.log(myPizza);
+     update(myPizza);
+
   });
 
   $("#toppings").submit(function(event){
     event.preventDefault();
     $("#toppings").hide();
     $("#topPic").hide();
-     var toppingCost = [];
+
+    toppingCost = [0];
     $("input:checkbox[name=top]:checked").each(function(){
       toppingCost.push(parseInt($(this).val()));
     });
-    console.log(toppingCost);
-    var toppingChoices =
+    toppingChoices =
     $("input:checkbox[name=top]:checked + label").map(function() {
       return $(this).text();
     }).get()
-    toppingCost = toppingCost.reduce(getTotal);
-    myPizza.toppings = toppingChoices;
-    myPizza.costs = (myPizza.costs + toppingCost);
+
+    getCost(toppingCost);
+
+    myPizza.finalOrder();
     $(".final").show();
-    myPizza.toppings.forEach(function (topping) {
-      $("#topList").append("<li>" + topping + "</li>");
-    });
-    $(".total").text("$" + myPizza.costs + ".97" )
     console.log(myPizza.costs);
 
   });
