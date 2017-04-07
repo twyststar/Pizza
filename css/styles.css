@@ -1,0 +1,21 @@
+img {
+  width: 100%;
+  height: auto;
+}
+h3 {
+  text-decoration: underline;
+}
+#topPic {
+  display: none;
+}
+
+#toppings {
+  display: none;
+}
+.well {
+  min-height: 700px;
+}
+
+.update {
+  float: right;
+}

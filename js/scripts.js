@@ -27,12 +27,20 @@ $(document).ready(function(){
      var basicCost = sizeCost + crustCost + cheeseCost;
      myPizza = new Pizza (size, crust, cheese);
      myPizza.costs = (sizeCost + crustCost + cheeseCost);
-     
+     $("#sizeCrust").hide();
+     $("#dough").hide();
+     $("#toppings").show();
+     $("#topPic").show();
+     $(".size").text(myPizza.size);
+     $(".crust").text(myPizza.crust);
+     $(".cheese").text(myPizza.cheese);
      console.log(myPizza);
   });
 
   $("#toppings").submit(function(event){
     event.preventDefault();
+    $("#toppings").hide();
+    $("#topPic").hide();
      var toppingCost = [];
     $("input:checkbox[name=top]:checked").each(function(){
       toppingCost.push(parseInt($(this).val()));
