@@ -27,11 +27,11 @@ _None_
 
 _The program will track assigned cost for input_
 * _Input -Pepperoni_
-* _Output -Pepperoni .50_
+* _Output -Pepperoni 1_
 
 _The program will add input costs on submit_
 * _Input - Large, Pepperoni_
-* _Output - 15.5_
+* _Output - 16_
 
 _The program will return order and cost to user_
 * _Input - Pizza order_

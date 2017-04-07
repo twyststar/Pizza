@@ -30,12 +30,13 @@ h3 {
   float: right;
 }
 .jumbotron p {
-  color: white;
+  color: #799db2;
 }
 .final {
   display: none;
 }
 .well {
+  border-color: #799db2;
   background-color: #697377;
   min-height: 800px;
 }
@@ -51,4 +52,10 @@ h3 {
 }
 .wow {
   display: none;
+}
+.cat {
+  padding-left: 10%;
+  margin-top: 70px;
+  height: 550px;
+  width: auto;
 }
