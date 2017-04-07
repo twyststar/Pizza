@@ -1,5 +1,5 @@
 //Business Logic
-function Pizza (size, crust, cheese, costs, toppings) {
+function Pizza (size, crust, cheese, toppings, costs) {
   this.size = size;
   this.crust = crust;
   this.cheese = cheese;
@@ -32,26 +32,26 @@ Pizza.prototype.finalOrder = function(){
   $(".total").text("$" + myPizza.costs + ".97" )
 }
 
+
 //UI Logic
 $(document).ready(function(){
   $("#sizeAndCrust").submit(function(event){
     event.preventDefault();
 
-     var size = $("#sizeChoice option:selected").text();
+     myPizza.size = $("#sizeChoice option:selected").text();
+     myPizza.crust = $("#crustChoice option:selected").text();
+     myPizza.cheese = $("#cheeseChoice option:selected").text();
      var sizeCost = parseInt($("#sizeChoice").val());
-     var crust = $("#crustChoice option:selected").text();
      var crustCost = parseInt($("#crustChoice").val());
-     var cheese = $("#cheeseChoice option:selected").text();
      var cheeseCost = parseInt($("#cheeseChoice").val());
      var basicCost = sizeCost + crustCost + cheeseCost;
-     myPizza = new Pizza (size, crust, cheese);
      myPizza.costs = (basicCost);
+     update(myPizza);
+
      $("#sizeCrust").hide();
      $("#dough").hide();
      $("#toppings").show();
      $("#topPic").show();
-     update(myPizza);
-
   });
 
   $("#toppings").submit(function(event){
@@ -69,12 +69,17 @@ $(document).ready(function(){
     }).get()
 
     getCost(toppingCost);
-
     myPizza.finalOrder();
+
     $(".final").show();
-    console.log(myPizza.costs);
-
   });
-
+  $(".deliver").click(function(event){
+    event.preventDefault();
+    $(".wait").show();
+  });
+  $(".really").click(function(event){
+    event.preventDefault();
+    $(".wow").show();
+  });
 
 });
